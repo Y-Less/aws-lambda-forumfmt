@@ -1,0 +1,3 @@
+[submodule "forumfmt"]
+	path = forumfmt
+	url = git@github.com:Y-Less/forumfmt.git
