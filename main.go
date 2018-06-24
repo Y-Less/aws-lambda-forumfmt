@@ -45,13 +45,11 @@ func AWSError(err error) (AWSResponse, error) {
 func LambdaHandler(awsevent AWSRequest) (AWSResponse, error) {
 	event := new(MyEvent)
 	_ = json.Unmarshal([]byte(awsevent.Body), &event)
-	log.Print("Hello from Lambda")
 	var (
 		out strings.Builder
 		err        error
 		jsonParsed *gabs.Container
 	)
-	log.Print(event.MD)
 	jsonParsed, err = markdown.ParseStyles(event.Style)
 	if err != nil {
 		return AWSError(errors.New(fmt.Sprintf("failed to process styles:", err)))
@@ -62,7 +60,6 @@ func LambdaHandler(awsevent AWSRequest) (AWSResponse, error) {
 		return  AWSError(errors.New(fmt.Sprintf("failed to process input:", err)))
 	}
 	body, err := json.Marshal(MyResponse{BB: out.String()})
-	log.Print(out.String())
 	if err != nil {
 		return AWSError(errors.New(fmt.Sprintf("failed to marshal response:", err)))
 	}
