@@ -39,7 +39,6 @@
         onerror: function (details) {
           alert('Could not retrieve BB code:');
           console.error(details);
-          //form.submit();
         },
         // Get the text.
         data: JSON.stringify({
@@ -50,7 +49,6 @@
     } catch (e) {
       alert('Could not retrieve BB code:');
       console.error(e);
-      //form.submit();
     }
   }
 
@@ -96,13 +94,10 @@
         }
       }
       // Debug print the lines.
-      //console.log(lines);
       if (shift) {
         var reduced = 0;
         // Backwards - harder!
         textbox.value = text.substring(0, begin) + lines.map(function (x) {
-          console.log('0: ' + x[0]);
-          console.log(x.substring(1));
           if (x[0] === '\t') {
             ++reduced;
             return x.substring(1);
