@@ -26,12 +26,20 @@
         },
         onload: function (details) {
           // Paste the new text in to the textbox.
-          textbox.value = JSON.parse(details.response).BB;
-          form.submit();
+          var text = JSON.parse(details.response).BB;
+          if (text) {
+            textbox.value = text;
+            form.submit();
+          } else {
+            alert("Could not retrieve BB code:");
+            console.error("Could not retrieve BB code:");
+            console.error(details);
+          }
         },
         onerror: function (details) {
+          alert("Could not retrieve BB code:");
           console.error(details);
-          form.submit();
+          //form.submit();
         },
         // Get the text.
         data: JSON.stringify({
@@ -40,8 +48,9 @@
         }),
       });
     } catch (e) {
+      alert("Could not retrieve BB code:");
       console.error(e);
-      form.submit();
+      //form.submit();
     }
   }
 
