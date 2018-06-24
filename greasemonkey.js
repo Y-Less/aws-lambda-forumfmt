@@ -11,18 +11,18 @@
 (function() {
   'use strict';
   
-  var STYLE = 'southclaws';
+  var STYLE = '';
 
   function replaceTextAndSubmit(form, textbox) {
     try {
-      // Submit it to AWS "forumfmt" to convert to BB code.
+      // Submit it to AWS 'forumfmt' to convert to BB code.
       GM_xmlhttpRequest({
-        method: "POST",
-        url: "https://ns3prdlla4.execute-api.eu-west-1.amazonaws.com/prod/markdown-post",
-        contentType: "application/json",
+        method: 'POST',
+        url: 'https://ns3prdlla4.execute-api.eu-west-1.amazonaws.com/prod/markdown-post',
+        contentType: 'application/json',
         headers: {
-          "User-Agent": "ForumEnhancer",
-          "Accept": "application/json",
+          'User-Agent': 'ForumEnhancer',
+          'Accept': 'application/json',
         },
         onload: function (details) {
           // Paste the new text in to the textbox.
@@ -31,13 +31,13 @@
             textbox.value = text;
             form.submit();
           } else {
-            alert("Could not retrieve BB code:");
-            console.error("Could not retrieve BB code:");
+            alert('Could not retrieve BB code:');
+            console.error('Could not retrieve BB code:');
             console.error(details);
           }
         },
         onerror: function (details) {
-          alert("Could not retrieve BB code:");
+          alert('Could not retrieve BB code:');
           console.error(details);
           //form.submit();
         },
@@ -45,10 +45,10 @@
         data: JSON.stringify({
           MD: textbox.value,
           Style: STYLE,
-        }),
+        }).replace('\t', '\\t'),
       });
     } catch (e) {
-      alert("Could not retrieve BB code:");
+      alert('Could not retrieve BB code:');
       console.error(e);
       //form.submit();
     }
@@ -101,7 +101,7 @@
         var reduced = 0;
         // Backwards - harder!
         textbox.value = text.substring(0, begin) + lines.map(function (x) {
-          console.log("0: " + x[0]);
+          console.log('0: ' + x[0]);
           console.log(x.substring(1));
           if (x[0] === '\t') {
             ++reduced;
@@ -124,11 +124,11 @@
     }
   }
 
-  window.addEventListener("load", function(e) {
-    var textbox = document.getElementById("vB_Editor_QR_textarea") || document.getElementById("vB_Editor_001_textarea");
+  window.addEventListener('load', function(e) {
+    var textbox = document.getElementById('vB_Editor_QR_textarea') || document.getElementById('vB_Editor_001_textarea');
     if (textbox) {
       var form = textbox.form;
-      textbox.addEventListener("keydown", function (event) {
+      textbox.addEventListener('keydown', function (event) {
         if (event.keyCode === 9 && !event.ctrlKey && !event.altKey && !event.metaKey) {
           // Pressed "tab", but not something like "ctrl+tab".
           doTab(textbox, event.shiftKey);
@@ -145,7 +145,7 @@
           event.preventDefault();
         }
       });
-      form.addEventListener("submit", function (event) {
+      form.addEventListener('submit', function (event) {
         if (!event.defaultPrevented) {
           // `prepare_submit` didn't stop us.
           replaceTextAndSubmit(form, textbox)
