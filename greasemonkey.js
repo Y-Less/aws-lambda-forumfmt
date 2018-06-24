@@ -58,11 +58,11 @@
     var start = textbox.selectionStart; // Mark the bounds of the selection.
     var end = textbox.selectionEnd;     // Mark the bounds of the selection.
     var text = textbox.value;
-    var nl = text.indexOf('\n', start);
-    if (nl >= end || nl === -1) {
+    var next = text.indexOf('\n', start);
+    var prev = text.lastIndexOf('\n', start) + 1;
+    if (next >= end || next === -1) {
       if (shift) {
         // Unindent, or go to the start of the line.
-        var prev = text.lastIndexOf('\n', start) + 1;
         if (text[prev] === '\t') {
           textbox.value = text.substring(0, prev) + text.substring(prev + 1);
           textbox.selectionStart = textbox.selectionEnd = Math.max(prev, start - 1);
@@ -75,8 +75,6 @@
     } else {
       // Multi-line:  Indent.
       // First, collect the lines to indent.
-      var prev = text.lastIndexOf('\n', start) + 1;
-      var next;
       var begin = prev;
       var finish; // Mark the bounds of the affected lines.
       var lines = [];
