@@ -10,6 +10,8 @@
 
 (function() {
   'use strict';
+  
+  var STYLE = 'southclaws';
 
   function replaceTextAndSubmit(form, textbox) {
     try {
@@ -28,16 +30,17 @@
           form.submit();
         },
         onerror: function (details) {
-          console.log(details);
+          console.error(details);
           form.submit();
         },
         // Get the text.
         data: JSON.stringify({
           MD: textbox.value,
+          Style: STYLE,
         }),
       });
     } catch (e) {
-      console.log(e);
+      console.error(e);
       form.submit();
     }
   }
@@ -56,30 +59,28 @@
       var form = textbox.form;
       textbox.addEventListener("keydown", function (event) {
         if (event.keyCode === 9 && !event.ctrlKey && !event.altKey && !event.metaKey) {
-          event.stopPropagation();
-          event.preventDefault();
           // Pressed "tab", but not something like "ctrl+tab".
           doTab(textbox, event.shiftKey);
-        } else if (event.keyCode === 13 && !event.shiftKey && event.ctrlKey && !event.altKey && !event.metaKey) {
           event.stopPropagation();
           event.preventDefault();
+        } else if (event.keyCode === 13 && !event.shiftKey && event.ctrlKey && !event.altKey && !event.metaKey) {
           // ctrl-enter.
-          if (form.onsubmit.call(form, {})) {
+          if (form.onsubmit({})) {
             // The default submission handler didn't prevent us submitting.
             replaceTextAndSubmit(form, textbox);
           }
           // Don't submit it here, we'll do that shortly when the data is returned.
+          event.stopPropagation();
+          event.preventDefault();
         }
       });
       form.addEventListener("submit", function (event) {
-        console.log("hi");
-        var prevented = event.defaultPrevented;
-        event.stopPropagation();
-        event.preventDefault();
-        if (!prevented) {
+        if (!event.defaultPrevented) {
           // `prepare_submit` didn't stop us.
           replaceTextAndSubmit(form, textbox)
         }
+        event.stopPropagation();
+        event.preventDefault();
         // Don't submit it here, we'll do that shortly when the data is returned.
       });
     }
