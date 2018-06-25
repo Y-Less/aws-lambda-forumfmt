@@ -3,6 +3,7 @@
 // @namespace    https://y-less.com/
 // @version      0.1
 // @copyright    2018, Alex "Y_Less" Cole
+// @license      https://www.mozilla.org/en-US/MPL/1.1/
 // @description  Enhance the SA:MP forums.
 // @author       Y_Less
 // @match        http://forum.sa-mp.com/*
