@@ -32,7 +32,7 @@ You can also use `tab` as in code editors - including block indentation and unin
 
 ## Editing
 
-Unfortunately, currently if you try edit a post you will only see the generated BB code, not the original markdown.  Thus, I suggest you keep a backup somewhere and edit and re-paste that version.  This isn't hard if you are keeping documentation synced between the forums and github, since github will have the original still.
+Unfortunately, currently if you try edit a post you will only see the generated BB code, not the original markdown.  Thus, I suggest you keep a backup somewhere and edit and re-paste that version.  This isn't hard if you are keeping documentation synced between the forums and github, since github will have the original still.  Also, for some reason sometimes the "edit" screen doesn't get the enhancement, I don't know why, but just press F5 and it will be fine.
 
 ## Markdown
 
