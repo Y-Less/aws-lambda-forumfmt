@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         SA:MP Forum Enhancer
 // @namespace    https://y-less.com/
-// @version      0.1
+// @version      0.2
 // @copyright    2018, Alex "Y_Less" Cole
 // @license      MPL-2.0
 // @description  Enhance the SA:MP forums.
@@ -126,7 +126,7 @@
   }
 
   window.addEventListener('load', function(e) {
-    var textbox = document.getElementById('vB_Editor_QR_textarea') || document.getElementById('vB_Editor_001_textarea');
+    var textbox = document.getElementById('vB_Editor_001_textarea') || document.getElementById('vB_Editor_QR_textarea');
     if (textbox) {
       var form = textbox.form;
       textbox.addEventListener('keydown', function (event) {
