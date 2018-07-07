@@ -20,7 +20,7 @@ https://openuserjs.org/about/Userscript-Beginners-HOWTO
 
 ## Background
 
-Southclaws got sick of writing BB code (and who can blame him), so wrote (forumfmt)[https://github.com/Southclaws/forumfmt] to convert markdown in to BB code.  This was originally written as an offline tool to convert documentation from github in to something that could be posted on the forums.  However, I decided I wanted it more integrated so wrote this script to intercept post submissions, translate the text with the tool, and then submit that adjusted code instead.
+Southclaws got sick of writing BB code (and who can blame him), so wrote [forumfmt](https://github.com/Southclaws/forumfmt) to convert markdown in to BB code.  This was originally written as an offline tool to convert documentation from github in to something that could be posted on the forums.  However, I decided I wanted it more integrated so wrote this script to intercept post submissions, translate the text with the tool, and then submit that adjusted code instead.
 
 What's wrong with BB code?  Well simply it isn't widely used.  If you write documentation on github, you'll use markdown.  If you write things on discord, you use markdown.  It makes sense to be able to use the same code everywhere.  Also, the `[[b][/b]pawn]` tags are broken on the forums, and didn't support common keywords like `foreach` anyway.
 
@@ -29,6 +29,10 @@ What's wrong with BB code?  Well simply it isn't widely used.  If you write docu
 Usage it very simple.  When you make a post on the forums, use markdown instead of BB code.  When you click `post`, or hit ctrl+enter (because `tab` no longer moves to the control) the text is converted and submitted.
 
 You can also use `tab` as in code editors - including block indentation and unindentation of multiple selected lines.
+
+## Editing
+
+Unfortunately, currently if you try edit a post you will only see the generated BB code, not the original markdown.  Thus, I suggest you keep a backup somewhere and edit and re-paste that version.  This isn't hard if you are keeping documentation synced between the forums and github, since github will have the original still.
 
 ## Markdown
 
