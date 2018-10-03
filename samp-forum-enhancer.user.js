@@ -6,7 +6,7 @@
 // @license      MPL-2.0
 // @description  Enhance the SA:MP forums.
 // @author       Y_Less
-// @match        http://forum.sa-mp.com/*
+// @match        https://forum.sa-mp.com/*
 // @grant        GM_xmlhttpRequest
 // ==/UserScript==
 // ==OpenUserJS==
